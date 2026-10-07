@@ -1,0 +1,1528 @@
+/* =============================================================
+   Мастерские.РФ - стили
+    1. Шрифты        2. Токены          3. Основа
+    4. Шапка         5. Кнопки          6. Формы
+    7. Баннер        8. Каталог         9. Вход и регистрация
+   10. Заявка       11. Кабинет и статусы 12. Отзыв и звёзды
+   13. Администратор 14. Пустой список и сообщения
+   15. Подвал       16. Анимации       17. Снижение движения
+   ============================================================= */
+
+
+/* ---------- 1. Шрифты: файлы лежат в проекте, интернет не нужен ---------- */
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/playfair-cyrillic.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/playfair-latin.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/manrope-cyrillic.woff2') format('woff2');
+  font-weight: 400 600;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/manrope-latin.woff2') format('woff2');
+  font-weight: 400 600;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+
+/* ---------- 2. Токены: фирменные цвета взяты из эмблемы ---------- */
+
+:root {
+  --cream: #FBF4E3;               /* фон страниц */
+  --paper: #FFFCF6;               /* карточки и поля: светлее фона */
+  --sand: #F3E6CB;                /* шапка таблицы, подложка картинок */
+  --terracotta: #C0572B;          /* главные кнопки: белый текст 4.5:1 */
+  --terracotta-dark: #9C421F;
+  --teal: #12545D;                /* ссылки, меню, подтверждённый статус */
+  --teal-dark: #0B3B41;
+  --ink: #1F2B2D;                 /* текст */
+  --ink-72: rgba(31, 43, 45, 0.72);
+  --ink-56: rgba(31, 43, 45, 0.56);
+  --line: rgba(31, 43, 45, 0.13);
+  --error: #A51C30;               /* ошибки: отличается от терракотового оттенком */
+  --error-tint: rgba(165, 28, 48, 0.06);
+  --teal-tint: rgba(18, 84, 93, 0.09);
+  --terracotta-tint: rgba(192, 87, 43, 0.13);
+  --shadow: 0 22px 44px -22px rgba(11, 59, 65, 0.42);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --r-pill: 999px;
+  --r-card: 22px;
+  --r-field: 14px;
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-text: 'Manrope', 'Segoe UI', Arial, sans-serif;
+}
+
+
+/* ---------- 3. Основа ---------- */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;      /* якорь #catalog не прячется под шапку */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-text);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  hyphens: none;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 1.5rem + 3.4vw, 4.3rem);
+  line-height: 0.96;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3.1rem);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 1.45rem;
+  line-height: 1.12;
+  margin-bottom: 8px;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.lead {
+  max-width: 50ch;
+  margin-bottom: 28px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-72);
+}
+
+a {
+  color: var(--teal);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--teal-dark);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(18, 84, 93, 0.5);
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.page {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  margin-bottom: 28px;
+}
+
+.page-head .lead {
+  margin-bottom: 0;
+}
+
+.muted {
+  font-size: 14px;
+  color: var(--ink-56);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+
+/* ---------- 4. Шапка ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(251, 244, 227, 0.88);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: saturate(1.3) blur(14px);
+}
+
+.site-header .navbar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--ink);
+}
+
+.brand img {
+  transition: transform 0.3s var(--ease);
+}
+
+.brand:hover img {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.brand-accent {
+  color: var(--terracotta);
+}
+
+.menu {
+  gap: 4px;
+  margin-left: auto;
+}
+
+.menu-link {
+  display: block;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-72);
+  text-decoration: none;
+  border-radius: var(--r-pill);
+  transition: color 0.2s, background-color 0.25s;
+}
+
+.menu-link:hover,
+.menu-link[aria-current="page"] {
+  color: var(--teal);
+  background: var(--teal-tint);
+}
+
+.menu-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-left: 6px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  border: 1.5px solid var(--teal);
+  border-radius: var(--r-pill);
+  transition: color 0.2s, background-color 0.25s;
+}
+
+.menu-account:hover {
+  color: #fff;
+  background: var(--teal);
+}
+
+.menu-account img {
+  transition: filter 0.2s;
+}
+
+.menu-account:hover img {
+  filter: brightness(0) invert(1);   /* бирюзовая иконка становится белой */
+}
+
+/* Бургер: две линии складываются в крестик */
+.menu-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: 0;
+}
+
+.menu-toggle:focus {
+  box-shadow: none;
+}
+
+.menu-toggle-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-line:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+@media (max-width: 767.98px) {
+  .menu {
+    padding: 10px 0 14px;
+  }
+
+  .menu-account {
+    justify-content: center;
+    margin: 8px 0 0;
+  }
+}
+
+/* Пункты меню по роли: роль сервер пишет в <body data-role> */
+[data-role="guest"] .for-user,
+[data-role="guest"] .for-admin,
+[data-role="guest"] .for-member,
+[data-role="user"] .for-guest,
+[data-role="user"] .for-admin,
+[data-role="admin"] .for-guest,
+[data-role="admin"] .for-user {
+  display: none;
+}
+
+
+/* ---------- 5. Кнопки: два типа, заливка и контур ---------- */
+
+.btn-main,
+.btn-line {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 28px;
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.3s var(--ease), color 0.2s;
+}
+
+/* Заливка выезжает слева при наведении */
+.btn-main::before,
+.btn-line::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+.btn-main {
+  color: #fff;
+  background: var(--terracotta);
+  border: 0;
+}
+
+.btn-main::before {
+  background: var(--terracotta-dark);
+}
+
+.btn-line {
+  color: var(--teal);
+  background: transparent;
+  border: 1.5px solid var(--teal);
+}
+
+.btn-line::before {
+  background: var(--teal);
+}
+
+.btn-main:hover,
+.btn-line:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.btn-main:hover::before,
+.btn-line:hover::before {
+  transform: scaleX(1);
+}
+
+/* Нажатие: кнопка чуть проседает */
+.btn-main:active,
+.btn-line:active {
+  transform: scale(0.97);
+  transition-duration: 0.2s;
+}
+
+.btn-main:disabled,
+.btn-line:disabled {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+}
+
+.btn-sm {
+  min-height: 44px;
+  padding: 9px 20px;
+  font-size: 15px;
+}
+
+.btn-wide {
+  width: 100%;
+}
+
+
+/* ---------- 6. Формы ---------- */
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.form-control,
+.form-select {
+  min-height: 50px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: var(--ink);
+  background-color: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-field);
+  transition: border-color 0.2s, box-shadow 0.25s var(--ease), background-color 0.2s;
+}
+
+.form-select {
+  padding-right: 44px;
+  background-position: right 16px center;
+}
+
+.form-control::placeholder {
+  color: rgba(31, 43, 45, 0.5);
+}
+
+.form-control:hover,
+.form-select:hover {
+  border-color: rgba(31, 43, 45, 0.32);
+}
+
+.form-control:focus,
+.form-select:focus {
+  color: var(--ink);
+  background-color: #fff;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(18, 84, 93, 0.16);
+}
+
+textarea.form-control {
+  min-height: 104px;
+  resize: vertical;
+}
+
+/* Поле с ошибкой: красная рамка, лёгкая заливка и короткое покачивание.
+   Класс свой (is-error), а не is-invalid из Bootstrap: тот добавляет в поле лишний значок */
+.form-control.is-error,
+.form-select.is-error {
+  background-color: var(--error-tint);
+  border-color: var(--error);
+  animation: shake 0.3s var(--ease);
+}
+
+.form-control.is-error:focus,
+.form-select.is-error:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 4px rgba(165, 28, 48, 0.14);
+}
+
+/* Текст ошибки под полем выезжает плавно */
+.field-error {
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--error);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height 0.3s var(--ease), margin-top 0.3s var(--ease), opacity 0.25s, transform 0.3s var(--ease);
+}
+
+.field-error.is-shown {
+  max-height: 80px;
+  margin-top: 7px;
+  opacity: 1;
+  transform: none;
+}
+
+.field-error::before {
+  content: '!';
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  margin-right: 7px;
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  background: var(--error);
+  border-radius: 50%;
+  vertical-align: 1px;
+}
+
+/* Иконка внутри поля слева */
+.field-with-icon {
+  position: relative;
+}
+
+.field-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  z-index: 2;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.field-with-icon .form-control,
+.field-with-icon .form-select {
+  padding-left: 52px;
+}
+
+/* Дата: в Chrome клик в любом месте поля открывает календарь */
+input[type="date"] {
+  position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+.form-panel {
+  padding: 28px;
+  background: var(--paper);
+  border-radius: var(--r-card);
+}
+
+.form-note {
+  margin: 12px 0 0;
+  font-size: 14px;
+  text-align: center;
+  color: var(--ink-56);
+}
+
+@media (max-width: 575.98px) {
+  .form-panel {
+    padding: 22px 18px;
+  }
+}
+
+
+/* ---------- 7. Баннер на главной ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0% 50%;        /* слева в кадре светлая стена: на ней текст */
+}
+
+/* Под текстом кадр мягко размыт и высветлен, к середине эффект сходит на нет.
+   Тёмную плашку не используем: фото остаётся светлым и тёплым */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(251, 244, 227, 0.82) 0%, rgba(251, 244, 227, 0.6) 34%, rgba(251, 244, 227, 0) 62%);
+  backdrop-filter: blur(5px);
+  mask-image: linear-gradient(90deg, #000 0%, #000 36%, transparent 64%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: clamp(520px, 76svh, 640px);
+  padding-top: 48px;
+  padding-bottom: 56px;
+}
+
+.hero-title {
+  max-width: 10.5em;
+  margin-bottom: 18px;
+}
+
+.hero-lead {
+  max-width: 25em;
+  margin-bottom: 26px;
+  font-size: 18px;
+  color: var(--ink-72);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+}
+
+.hero-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-72);
+}
+
+/* Смартфон: картинка сверху, текст под ней на кремовом фоне */
+@media (max-width: 767.98px) {
+  .hero::before {
+    display: none;
+  }
+
+  .hero-image {
+    position: relative;
+    height: 270px;
+    object-position: 74% 50%;
+  }
+
+  .hero-content {
+    min-height: 0;
+    padding-top: 26px;
+    padding-bottom: 44px;
+  }
+
+  .hero-lead {
+    font-size: 17px;
+  }
+}
+
+
+/* ---------- 8. Каталог мастерских ---------- */
+
+.catalog {
+  padding-top: 72px;
+  padding-bottom: 88px;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 40px;
+  margin-bottom: 32px;
+}
+
+.section-head h2 {
+  margin: 0;
+}
+
+.section-lead {
+  max-width: 38ch;
+  margin: 0;
+  color: var(--ink-72);
+}
+
+.workshop-card,
+.app-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  border-radius: var(--r-card);
+  transition: transform 0.25s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+/* Наведение: карточка приподнимается и отбрасывает тень */
+.workshop-card:hover,
+.app-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.workshop-photo,
+.app-photo {
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.workshop-photo {
+  aspect-ratio: 16 / 9;
+}
+
+.workshop-photo img,
+.app-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s var(--ease);
+}
+
+.workshop-card:hover .workshop-photo img {
+  transform: scale(1.05);
+}
+
+.workshop-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px 24px 24px;
+}
+
+.workshop-body p {
+  margin-bottom: 20px;
+  font-size: 15.5px;
+  color: var(--ink-72);
+}
+
+.workshop-body .btn-line {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* Вся карточка кликабельна (stretched-link), кнопка заливается вместе с ней */
+.workshop-card:hover .btn-line {
+  color: #fff;
+}
+
+.workshop-card:hover .btn-line::before {
+  transform: scaleX(1);
+}
+
+
+/* ---------- 9. Вход и регистрация: фон auth-bg ---------- */
+
+.auth {
+  position: relative;
+  display: grid;
+  padding-top: 26svh;              /* сверху видна картинка, ниже лист с формой */
+}
+
+.auth-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.auth-panel {
+  position: relative;
+  padding: 32px 20px 48px;
+  background: rgba(251, 244, 227, 0.95);
+  border-radius: 28px 28px 0 0;
+  backdrop-filter: blur(12px);
+}
+
+.auth-switch {
+  margin: 22px 0 0;
+  text-align: center;
+}
+
+.auth-switch a {
+  color: var(--ink-72);
+  text-decoration: none;
+}
+
+.auth-switch span {
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.auth-switch a:hover span {
+  color: var(--teal-dark);
+}
+
+/* Планшет: форма отдельной панелью поверх фона */
+@media (min-width: 576px) {
+  .auth {
+    padding: 64px 24px 72px;
+  }
+
+  .auth-panel {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: var(--r-card);
+  }
+}
+
+/* Компьютер: форма слева, фото справа на всю высоту, впритык к краю окна.
+   Фото absolute: оно тянется по высоте формы и само высоту не раздувает */
+@media (min-width: 992px) {
+  .auth {
+    --photo-width: clamp(380px, 36vw, 540px);
+    grid-template-columns: minmax(0, 1fr) var(--photo-width);
+    min-height: calc(100vh - 65px);
+    padding: 0;
+  }
+
+  .auth-bg {
+    position: absolute;
+    inset: 0 0 0 auto;
+    z-index: auto;
+    width: var(--photo-width);
+    height: 100%;
+  }
+
+  .auth-panel {
+    grid-column: 1;
+    align-self: center;
+    max-width: 440px;
+    padding: 56px 0 72px;
+    background: none;
+    backdrop-filter: none;
+  }
+}
+
+
+/* ---------- 10. Страница заявки ---------- */
+
+/* Смартфон: заголовок, маленькое фото мастерской, форма. Компьютер: форма слева, фото справа */
+.application-layout {
+  display: grid;
+  grid-template-areas: "head" "preview" "form";
+  gap: 20px;
+}
+
+.application-head {
+  grid-area: head;
+}
+
+.application-head .lead {
+  margin-bottom: 0;
+}
+
+.application-head .notice {
+  margin: 20px 0 0;
+}
+
+.workshop-preview {
+  grid-area: preview;
+}
+
+#application-form {
+  grid-area: form;
+}
+
+.workshop-preview {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+  background: var(--paper);
+  border-radius: var(--r-card);
+}
+
+.workshop-preview img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: opacity 0.25s;
+}
+
+.workshop-preview.is-changing img {
+  opacity: 0;
+}
+
+.workshop-preview figcaption {
+  display: grid;
+  gap: 2px;
+  padding: 12px 16px;
+}
+
+.preview-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.15;
+}
+
+.preview-text {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-72);
+}
+
+@media (min-width: 992px) {
+  .application-layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    grid-template-areas: "head preview" "form preview";
+    align-items: start;
+    gap: 28px 56px;
+  }
+
+  .workshop-preview {
+    position: sticky;
+    top: 104px;
+    display: block;
+    margin-top: 8px;
+  }
+
+  .workshop-preview figcaption {
+    gap: 6px;
+    padding: 20px 24px 24px;
+  }
+
+  .preview-name {
+    font-size: 1.6rem;
+  }
+
+  .preview-text {
+    font-size: 15.5px;
+  }
+}
+
+
+/* ---------- 11. Кабинет: карточки заявок и статусы ---------- */
+
+.app-photo {
+  aspect-ratio: 16 / 7;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 22px 24px;
+}
+
+.app-body h3 {
+  margin: 0;
+}
+
+.app-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.app-number {
+  font-size: 13px;
+  color: var(--ink-56);
+}
+
+.app-facts {
+  display: grid;
+  gap: 6px;
+}
+
+.app-fact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--ink-72);
+}
+
+/* Бейдж статуса: разные цвет, форма значка и текст */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px 5px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  border-radius: var(--r-pill);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.badge-status::before {
+  content: '';
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-1 {                       /* Новая: пустой кружок */
+  color: #8A3A18;
+  background: var(--terracotta-tint);
+}
+
+.status-1::before {
+  border: 2px solid currentColor;
+}
+
+.status-2 {                       /* Запись подтверждена: галочка */
+  color: #fff;
+  background: var(--teal);
+}
+
+.status-2::before {
+  width: 15px;
+  height: 15px;
+  border-radius: 0;
+  background: url('../images/icon-check.png') center / contain no-repeat;
+  filter: brightness(0) invert(1);
+}
+
+.status-3 {                       /* Завершено: закрашенный кружок */
+  color: var(--ink);
+  background: rgba(31, 43, 45, 0.09);
+}
+
+.status-3::before {
+  background: currentColor;
+}
+
+
+/* ---------- 12. Отзыв и звёзды ---------- */
+
+.review {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.review-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.review-text {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-72);
+  overflow-wrap: anywhere;
+}
+
+.review-hint {
+  margin: auto 0 0;
+  padding-top: 14px;
+  font-size: 14px;
+  color: var(--ink-56);
+  border-top: 1px solid var(--line);
+}
+
+.review-stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.review-stars .is-off {
+  filter: grayscale(1);
+  opacity: 0.3;
+}
+
+.review-open {
+  justify-self: start;
+}
+
+.review-form {
+  display: grid;
+  gap: 6px;
+  animation: rise 0.5s var(--ease) both;
+}
+
+.review-form .btn-main {
+  justify-self: start;
+  margin-top: 8px;
+}
+
+.stars {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Звёзды идут в обратном порядке (5..1) и разворачиваются: так CSS подсвечивает «эту и все левее» */
+.stars-row {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: 2px;
+}
+
+.stars-row input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.stars-row label {
+  padding: 4px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.stars-row img {
+  width: 32px;
+  height: 32px;
+  filter: grayscale(1);
+  opacity: 0.32;
+  transition: transform 0.2s var(--ease), filter 0.2s, opacity 0.2s;
+}
+
+.stars-row input:checked ~ label img,
+.stars-row:hover label:hover img,
+.stars-row:hover label:hover ~ label img {
+  filter: none;
+  opacity: 1;
+}
+
+.stars-row:hover label:not(:hover):not(:hover ~ label) img {
+  filter: grayscale(1);
+  opacity: 0.32;
+}
+
+.stars-row input:checked + label img {
+  transform: scale(1.15);
+}
+
+.stars-row input:focus-visible + label {
+  outline: 3px solid rgba(18, 84, 93, 0.5);
+}
+
+.stars.is-error .stars-row {
+  animation: shake 0.3s var(--ease);
+}
+
+
+/* ---------- 13. Панель администратора ---------- */
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  min-height: 44px;
+  padding: 9px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-72);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.25s, border-color 0.2s, transform 0.2s var(--ease);
+}
+
+.chip:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+.chip:active {
+  transform: scale(0.97);
+}
+
+.chip.is-active {
+  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.count {
+  margin: 14px 0 18px;
+  font-size: 15px;
+  color: var(--ink-56);
+}
+
+.table-wrap {
+  display: none;
+}
+
+.admin-table {
+  width: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--r-card);
+}
+
+.admin-table th {
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-72);
+  text-align: left;
+  background: var(--sand);
+}
+
+.admin-table td {
+  padding: 16px;
+  font-size: 15px;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+
+.admin-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(18, 84, 93, 0.04);
+}
+
+.person-name {
+  display: block;
+  font-weight: 600;
+}
+
+.person-contacts {
+  display: block;
+  font-size: 14px;
+  color: var(--ink-56);
+  overflow-wrap: anywhere;
+}
+
+.admin-review {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ink-56);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-card {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+  padding: 20px;
+  background: var(--paper);
+  border-radius: var(--r-card);
+  transition: transform 0.25s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.admin-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.admin-card dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  margin: 0;
+  font-size: 15px;
+}
+
+.admin-card dt {
+  font-weight: 400;
+  color: var(--ink-56);
+}
+
+.admin-card dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 992px) {
+  .table-wrap {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .admin-cards {
+    display: none;
+  }
+}
+
+
+/* ---------- 14. Пустой список и сообщения ---------- */
+
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 24px 16px 8px;
+  text-align: center;
+  animation: rise 0.7s var(--ease) both;
+}
+
+.empty img {
+  width: min(100%, 380px);
+}
+
+.empty-text {
+  max-width: 34ch;
+  margin: 0 0 12px;
+  color: var(--ink-72);
+}
+
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--teal-dark);
+  background: var(--teal-tint);
+  border-radius: var(--r-field);
+  animation: rise 0.5s var(--ease) both;
+}
+
+.notice::before {
+  content: '';
+  flex: none;
+  width: 22px;
+  height: 22px;
+  background: url('../images/icon-check.png') center / contain no-repeat;
+}
+
+.notice-error {
+  color: var(--error);
+  background: var(--error-tint);
+}
+
+.notice-error::before {
+  content: '!';
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  color: #fff;
+  background: var(--error);
+  border-radius: 50%;
+}
+
+
+/* ---------- 15. Подвал ---------- */
+
+.site-footer {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 28px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.brand-small {
+  font-size: 18px;
+}
+
+.footer-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.footer-note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-56);
+}
+
+
+/* ---------- 16. Анимации ---------- */
+
+/* Появление: снизу вверх с размытием */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-5px); }
+  75%      { transform: translateX(5px); }
+}
+
+/* Бейдж после смены статуса: сжимается и «выпрыгивает» в новом цвете */
+@keyframes badge-pop {
+  0%   { transform: scale(0.6); opacity: 0.2; }
+  55%  { transform: scale(1.14); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Строка или карточка, где сменили статус, на секунду подсвечивается */
+@keyframes flash-row {
+  from { background-color: rgba(18, 84, 93, 0.16); }
+  to   { background-color: transparent; }
+}
+
+@keyframes flash-ring {
+  from { box-shadow: 0 0 0 4px rgba(18, 84, 93, 0.4); }
+  to   { box-shadow: 0 0 0 4px rgba(18, 84, 93, 0); }
+}
+
+/* Заголовок, текст и форма страницы появляются по очереди */
+.rise {
+  animation: rise 0.8s var(--ease) both;
+}
+
+.rise:nth-child(2) { animation-delay: 0.08s; }
+.rise:nth-child(3) { animation-delay: 0.16s; }
+.rise:nth-child(4) { animation-delay: 0.24s; }
+.rise:nth-child(5) { animation-delay: 0.32s; }
+
+/* Карточки и строки появляются лесенкой: номер в списке задаёт задержку */
+.reveal {
+  animation: rise 0.7s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* Строки таблицы только проявляются: сдвиг и размытие на <tr> браузеры рисуют ненадёжно */
+.admin-table tr.reveal {
+  animation-name: fade;
+}
+
+.stagger > :nth-child(2)  { --i: 1; }
+.stagger > :nth-child(3)  { --i: 2; }
+.stagger > :nth-child(4)  { --i: 3; }
+.stagger > :nth-child(5)  { --i: 4; }
+.stagger > :nth-child(6)  { --i: 5; }
+.stagger > :nth-child(7)  { --i: 6; }
+.stagger > :nth-child(n+8) { --i: 7; }
+
+.badge-status.is-changed {
+  animation: badge-pop 0.6s var(--ease);
+}
+
+tr.is-updated {
+  animation: flash-row 1.4s var(--ease);
+}
+
+.admin-card.is-updated {
+  animation: flash-ring 1.4s var(--ease);
+}
+
+
+/* ---------- 17. Снижение движения: если включено в системе, анимаций нет ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

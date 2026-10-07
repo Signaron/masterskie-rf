@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мои заявки - Мастерские.РФ</title>
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/bootstrap/bootstrap.bundle.min.js" defer></script>
+  <script src="/js/Validator.js" defer></script>
+  <script src="/js/common.js" defer></script>
+  <script src="/js/cabinet.js" defer></script>
+</head>
+<body>
+<!-- header -->
+
+  <main class="container page">
+    <div class="page-head">
+      <div>
+        <h1 class="rise">Мои заявки</h1>
+        <p class="lead rise">Статус каждой записи. После занятия можно оставить отзыв.</p>
+      </div>
+      <div class="rise"><a class="btn-main" href="/application">Новая заявка</a></div>
+    </div>
+
+    <p class="notice" id="message" hidden></p>
+
+    <!-- Карточки заявок строит cabinet.js -->
+    <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 stagger" id="applications"></div>
+
+    <div class="empty" id="empty" hidden>
+      <img src="/images/empty.webp" alt="Открытая коробка с кистью, свечой и глиной" width="480" height="270" loading="lazy">
+      <p class="empty-text">Заявок пока нет. Выберите мастерскую и&nbsp;запишитесь на&nbsp;первое занятие.</p>
+      <a class="btn-main" href="/#catalog">Выбрать мастерскую</a>
+    </div>
+  </main>
+
+<!-- footer -->
+</body>
+</html>

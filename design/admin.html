@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Макет 390x844: Панель администратора - Мастерские.РФ</title>
+  <link rel="icon" href="../public/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/style.css">
+  <script src="../public/bootstrap/bootstrap.bundle.min.js" defer=""></script>
+  </head>
+<body data-role="admin">
+  <!-- Шапка: одна на все страницы, сервер подставляет её вместо метки header.
+       Пункты for-guest / for-user / for-admin / for-member прячет CSS по роли из <body data-role> -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Главное меню">
+      <a class="brand" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ: ваза, кисть и резец в круге" width="44" height="44">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Открыть меню">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav menu">
+          <li><a class="menu-link" href="index.html#catalog">Мастерские</a></li>
+          <li class="for-user"><a class="menu-link" href="application.html">Записаться</a></li>
+          <li class="for-user"><a class="menu-link" href="cabinet.html">Мои заявки</a></li>
+          <li class="for-admin"><a class="menu-link" href="admin.html" aria-current="page">Панель администратора</a></li>
+          <li class="for-guest"><a class="menu-link" href="register.html">Регистрация</a></li>
+          <li class="for-guest">
+            <a class="menu-account" href="login.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Войти
+            </a>
+          </li>
+          <li class="for-member">
+            <a class="menu-account" href="index.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Выйти
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="container page">
+    <div class="page-head">
+      <div>
+        <h1 class="rise">Заявки</h1>
+        <p class="lead rise">Проверьте данные и&nbsp;смените статус: «Запись подтверждена» или «Завершено».</p>
+      </div>
+    </div>
+
+    <!-- Кнопки фильтра строит admin.js из таблицы statuses; выборку делает база -->
+    <div class="filter rise" id="filter" role="group" aria-label="Фильтр по статусу"><button class="chip is-active" type="button" data-filter="">Все</button><button class="chip" type="button" data-filter="1">Новая</button><button class="chip" type="button" data-filter="2">Запись подтверждена</button><button class="chip" type="button" data-filter="3">Завершено</button></div>
+    <p class="count" id="count" aria-live="polite">Найдено заявок: 6</p>
+    <p class="notice" id="message" hidden=""></p>
+
+    <!-- Широкий экран: таблица -->
+    <div class="table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th scope="col">№</th>
+            <th scope="col">Пользователь</th>
+            <th scope="col">Мастерская</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Оплата</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Действие</th>
+          </tr>
+        </thead>
+        <tbody class="stagger" id="rows">
+    <tr class="reveal" data-id="6">
+      <td>6</td>
+      <td>
+    <span class="person-name">Смирнова Анна Олеговна</span>
+    <span class="person-contacts">anna2027, 8(903)111-22-33</span>
+    <span class="person-contacts">anna@yandex.ru</span></td>
+      <td>Кулинарная студия</td>
+      <td class="nowrap">23.10.2026</td>
+      <td>Наличными при посещении</td>
+      <td data-slot="status"><span class="badge-status status-2">Запись подтверждена</span></td>
+      <td data-slot="actions"><div class="actions"><button class="btn-line btn-sm" type="button" data-id="6" data-status="3">Завершено</button></div></td>
+    </tr>
+    <tr class="reveal" data-id="5">
+      <td>5</td>
+      <td>
+    <span class="person-name">Смирнова Анна Олеговна</span>
+    <span class="person-contacts">anna2027, 8(903)111-22-33</span>
+    <span class="person-contacts">anna@yandex.ru</span></td>
+      <td>Художественная студия</td>
+      <td class="nowrap">16.10.2026</td>
+      <td>Переводом по СБП</td>
+      <td data-slot="status"><span class="badge-status status-1">Новая</span></td>
+      <td data-slot="actions"><div class="actions"><button class="btn-main btn-sm" type="button" data-id="5" data-status="2">Подтвердить запись</button><button class="btn-line btn-sm" type="button" data-id="5" data-status="3">Завершено</button></div></td>
+    </tr>
+    <tr class="reveal" data-id="4">
+      <td>4</td>
+      <td>
+    <span class="person-name">Петров Иван Сергеевич</span>
+    <span class="person-contacts">ivan2027, 8(912)345-67-89</span>
+    <span class="person-contacts">ivan@mail.ru</span></td>
+      <td>Столярная мастерская</td>
+      <td class="nowrap">19.10.2026</td>
+      <td>Наличными при посещении</td>
+      <td data-slot="status"><span class="badge-status status-1">Новая</span></td>
+      <td data-slot="actions"><div class="actions"><button class="btn-main btn-sm" type="button" data-id="4" data-status="2">Подтвердить запись</button><button class="btn-line btn-sm" type="button" data-id="4" data-status="3">Завершено</button></div></td>
+    </tr>
+    <tr class="reveal" data-id="3">
+      <td>3</td>
+      <td>
+    <span class="person-name">Петров Иван Сергеевич</span>
+    <span class="person-contacts">ivan2027, 8(912)345-67-89</span>
+    <span class="person-contacts">ivan@mail.ru</span></td>
+      <td>Кулинарная студия</td>
+      <td class="nowrap">12.10.2026</td>
+      <td>Переводом по СБП</td>
+      <td data-slot="status"><span class="badge-status status-2">Запись подтверждена</span></td>
+      <td data-slot="actions"><div class="actions"><button class="btn-line btn-sm" type="button" data-id="3" data-status="3">Завершено</button></div></td>
+    </tr>
+    <tr class="reveal" data-id="2">
+      <td>2</td>
+      <td>
+    <span class="person-name">Петров Иван Сергеевич</span>
+    <span class="person-contacts">ivan2027, 8(912)345-67-89</span>
+    <span class="person-contacts">ivan@mail.ru</span></td>
+      <td>Мастерская свечей</td>
+      <td class="nowrap">01.10.2026</td>
+      <td>Наличными при посещении</td>
+      <td data-slot="status"><span class="badge-status status-3">Завершено</span></td>
+      <td data-slot="actions"><span class="muted">Действий нет</span></td>
+    </tr>
+    <tr class="reveal" data-id="1">
+      <td>1</td>
+      <td>
+    <span class="person-name">Петров Иван Сергеевич</span>
+    <span class="person-contacts">ivan2027, 8(912)345-67-89</span>
+    <span class="person-contacts">ivan@mail.ru</span></td>
+      <td>Гончарная мастерская<span class="admin-review">Отзыв: 5 из 5</span></td>
+      <td class="nowrap">17.09.2026</td>
+      <td>Переводом по СБП</td>
+      <td data-slot="status"><span class="badge-status status-3">Завершено</span></td>
+      <td data-slot="actions"><span class="muted">Действий нет</span></td>
+    </tr></tbody>
+      </table>
+    </div>
+
+    <!-- Смартфон и планшет: карточки -->
+    <div class="admin-cards row g-3 row-cols-1 row-cols-md-2 stagger" id="cards">
+    <div class="col reveal">
+      <article class="admin-card" data-id="6">
+        <div class="app-top">
+          <span data-slot="status"><span class="badge-status status-2">Запись подтверждена</span></span>
+          <span class="app-number">Заявка №6</span>
+        </div>
+        <h3>Кулинарная студия</h3>
+        <dl>
+          <dt>Пользователь</dt><dd>
+    <span class="person-name">Смирнова Анна Олеговна</span>
+    <span class="person-contacts">anna2027, 8(903)111-22-33</span>
+    <span class="person-contacts">anna@yandex.ru</span></dd>
+          <dt>Дата</dt><dd>23.10.2026</dd>
+          <dt>Оплата</dt><dd>Наличными при посещении</dd>
+        </dl>
+        
+        <div data-slot="actions"><div class="actions"><button class="btn-line btn-sm" type="button" data-id="6" data-status="3">Завершено</button></div></div>
+      </article>
+    </div>
+    <div class="col reveal">
+      <article class="admin-card" data-id="5">
+        <div class="app-top">
+          <span data-slot="status"><span class="badge-status status-1">Новая</span></span>
+          <span class="app-number">Заявка №5</span>
+        </div>
+        <h3>Художественная студия</h3>
+        <dl>
+          <dt>Пользователь</dt><dd>
+    <span class="person-name">Смирнова Анна Олеговна</span>
+    <span class="person-contacts">anna2027, 8(903)111-22-33</span>
+    <span class="person-contacts">anna@yandex.ru</span></dd>
+          <dt>Дата</dt><dd>16.10.2026</dd>
+          <dt>Оплата</dt><dd>Переводом по СБП</dd>
+        </dl>
+        
+        <div data-slot="actions"><div class="actions"><button class="btn-main btn-sm" type="button" data-id="5" data-status="2">Подтвердить запись</button><button class="btn-line btn-sm" type="button" data-id="5" data-status="3">Завершено</button></div></div>
+      </article>
+    </div>
+    <div class="col reveal">
+      <article class="admin-card" data-id="4">
+        <div class="app-top">
+          <span data-slot="status"><span class="badge-status status-1">Новая</span></span>
+          <span class="app-number">Заявка №4</span>
+        </div>
+        <h3>Столярная мастерская</h3>
+        <dl>
+          <dt>Пользователь</dt><dd>
+    <span class="person-name">Петров Иван Сергеевич</span>
+    <span class="person-contacts">ivan2027, 8(912)345-67-89</span>
+    <span class="person-contacts">ivan@mail.ru</span></dd>
+          <dt>Дата</dt><dd>19.10.2026</dd>
+          <dt>Оплата</dt><dd>Наличными при посещении</dd>
+        </dl>
+        
+        <div data-slot="actions"><div class="actions"><button class="btn-main btn-sm" type="button" data-id="4" data-status="2">Подтвердить запись</button><button class="btn-line btn-sm" type="button" data-id="4" data-status="3">Завершено</button></div></div>
+      </article>
+    </div>
+    <div class="col reveal">
+      <article class="admin-card" data-id="3">
+        <div class="app-top">
+          <span data-slot="status"><span class="badge-status status-2">Запись подтверждена</span></span>
+          <span class="app-number">Заявка №3</span>
+        </div>
+        <h3>Кулинарная студия</h3>
+        <dl>
+          <dt>Пользователь</dt><dd>
+    <span class="person-name">Петров Иван Сергеевич</span>
+    <span class="person-contacts">ivan2027, 8(912)345-67-89</span>
+    <span class="person-contacts">ivan@mail.ru</span></dd>
+          <dt>Дата</dt><dd>12.10.2026</dd>
+          <dt>Оплата</dt><dd>Переводом по СБП</dd>
+        </dl>
+        
+        <div data-slot="actions"><div class="actions"><button class="btn-line btn-sm" type="button" data-id="3" data-status="3">Завершено</button></div></div>
+      </article>
+    </div>
+    <div class="col reveal">
+      <article class="admin-card" data-id="2">
+        <div class="app-top">
+          <span data-slot="status"><span class="badge-status status-3">Завершено</span></span>
+          <span class="app-number">Заявка №2</span>
+        </div>
+        <h3>Мастерская свечей</h3>
+        <dl>
+          <dt>Пользователь</dt><dd>
+    <span class="person-name">Петров Иван Сергеевич</span>
+    <span class="person-contacts">ivan2027, 8(912)345-67-89</span>
+    <span class="person-contacts">ivan@mail.ru</span></dd>
+          <dt>Дата</dt><dd>01.10.2026</dd>
+          <dt>Оплата</dt><dd>Наличными при посещении</dd>
+        </dl>
+        
+        <div data-slot="actions"><span class="muted">Действий нет</span></div>
+      </article>
+    </div>
+    <div class="col reveal">
+      <article class="admin-card" data-id="1">
+        <div class="app-top">
+          <span data-slot="status"><span class="badge-status status-3">Завершено</span></span>
+          <span class="app-number">Заявка №1</span>
+        </div>
+        <h3>Гончарная мастерская</h3>
+        <dl>
+          <dt>Пользователь</dt><dd>
+    <span class="person-name">Петров Иван Сергеевич</span>
+    <span class="person-contacts">ivan2027, 8(912)345-67-89</span>
+    <span class="person-contacts">ivan@mail.ru</span></dd>
+          <dt>Дата</dt><dd>17.09.2026</dd>
+          <dt>Оплата</dt><dd>Переводом по СБП</dd>
+        </dl>
+        <span class="admin-review">Отзыв: 5 из 5</span>
+        <div data-slot="actions"><span class="muted">Действий нет</span></div>
+      </article>
+    </div></div>
+
+    <p class="count">Если в выбранном статусе заявок нет:</p><div class="empty" id="empty">
+      <img src="../public/images/empty.webp" alt="Открытая коробка с кистью, свечой и глиной" width="480" height="270" loading="lazy">
+      <p class="empty-text">Заявок с&nbsp;таким статусом нет.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-small" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ" width="32" height="32" loading="lazy">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+      <a class="footer-phone" href="tel:88005552027">
+        <img src="../public/images/icon-phone.png" alt="Телефон" width="24" height="24" loading="lazy">8 800 555-20-27
+      </a>
+      <p class="footer-note">Запись на творческие мастер-классы, 2026</p>
+    </div>
+  </footer>
+
+
+
+</body></html>

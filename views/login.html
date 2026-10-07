@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вход - Мастерские.РФ</title>
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/bootstrap/bootstrap.bundle.min.js" defer></script>
+  <script src="/js/Validator.js" defer></script>
+  <script src="/js/common.js" defer></script>
+  <script src="/js/login.js" defer></script>
+</head>
+<body>
+<!-- header -->
+
+  <main class="auth">
+    <img class="auth-bg" src="/images/auth-bg.webp" width="390" height="844"
+         alt="Деревянные полки с глиняными чашами в мастерской">
+
+    <div class="auth-panel">
+      <h1 class="rise">Вход</h1>
+      <p class="lead rise">Войдите, чтобы записаться на мастер-класс и&nbsp;следить за&nbsp;своими заявками.</p>
+      <p class="notice" id="message" hidden></p>
+
+      <form class="rise" id="login-form" novalidate>
+        <div class="field">
+          <label class="field-label" for="login">Логин</label>
+          <input class="form-control" id="login" name="login" maxlength="50" autocomplete="username"
+                 aria-describedby="login-error">
+          <p class="field-error" id="login-error" data-for="login" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="password">Пароль</label>
+          <input class="form-control" id="password" name="password" type="password" autocomplete="current-password"
+                 aria-describedby="password-error">
+          <p class="field-error" id="password-error" data-for="password" aria-live="polite"></p>
+        </div>
+
+        <button class="btn-main btn-wide" type="submit">Войти</button>
+      </form>
+
+      <p class="auth-switch rise"><a href="/register">Еще не зарегистрированы? <span>Регистрация</span></a></p>
+    </div>
+  </main>
+
+<!-- footer -->
+</body>
+</html>

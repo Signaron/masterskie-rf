@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Макет 390x844: Мои заявки - Мастерские.РФ</title>
+  <link rel="icon" href="../public/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/style.css">
+  <script src="../public/bootstrap/bootstrap.bundle.min.js" defer=""></script>
+  </head>
+<body data-role="user">
+  <!-- Шапка: одна на все страницы, сервер подставляет её вместо метки header.
+       Пункты for-guest / for-user / for-admin / for-member прячет CSS по роли из <body data-role> -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Главное меню">
+      <a class="brand" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ: ваза, кисть и резец в круге" width="44" height="44">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Открыть меню">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav menu">
+          <li><a class="menu-link" href="index.html#catalog">Мастерские</a></li>
+          <li class="for-user"><a class="menu-link" href="application.html">Записаться</a></li>
+          <li class="for-user"><a class="menu-link" href="cabinet.html" aria-current="page">Мои заявки</a></li>
+          <li class="for-admin"><a class="menu-link" href="admin.html">Панель администратора</a></li>
+          <li class="for-guest"><a class="menu-link" href="register.html">Регистрация</a></li>
+          <li class="for-guest">
+            <a class="menu-account" href="login.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Войти
+            </a>
+          </li>
+          <li class="for-member">
+            <a class="menu-account" href="index.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Выйти
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="container page">
+    <div class="page-head">
+      <div>
+        <h1 class="rise">Мои заявки</h1>
+        <p class="lead rise">Статус каждой записи. После занятия можно оставить отзыв.</p>
+      </div>
+      <div class="rise"><a class="btn-main" href="application.html">Новая заявка</a></div>
+    </div>
+
+    <p class="notice" id="message" hidden=""></p>
+
+    <!-- Карточки заявок строит cabinet.js -->
+    <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 stagger" id="applications">
+    <div class="col reveal">
+      <article class="app-card" data-id="4">
+        <div class="app-photo">
+          <img src="../public/images/woodwork.webp" alt="Столярная мастерская" width="640" height="360" loading="lazy">
+        </div>
+        <div class="app-body">
+          <div class="app-top">
+            <span class="badge-status status-1">Новая</span>
+            <span class="app-number">Заявка №4</span>
+          </div>
+          <h3>Столярная мастерская</h3>
+          <div class="app-facts">
+            <p class="app-fact"><img src="../public/images/icon-calendar.png" alt="Дата" width="20" height="20">19.10.2026</p>
+            <p class="app-fact"><img src="../public/images/icon-card.png" alt="Оплата" width="20" height="20">Наличными при посещении</p>
+          </div>
+          <div class="review-slot"><p class="review-hint">Отзыв можно оставить после мастер-класса</p></div>
+        </div>
+      </article>
+    </div>
+    <div class="col reveal">
+      <article class="app-card" data-id="3">
+        <div class="app-photo">
+          <img src="../public/images/cooking.webp" alt="Кулинарная студия" width="640" height="360" loading="lazy">
+        </div>
+        <div class="app-body">
+          <div class="app-top">
+            <span class="badge-status status-2">Запись подтверждена</span>
+            <span class="app-number">Заявка №3</span>
+          </div>
+          <h3>Кулинарная студия</h3>
+          <div class="app-facts">
+            <p class="app-fact"><img src="../public/images/icon-calendar.png" alt="Дата" width="20" height="20">12.10.2026</p>
+            <p class="app-fact"><img src="../public/images/icon-card.png" alt="Оплата" width="20" height="20">Переводом по СБП</p>
+          </div>
+          <div class="review-slot"><p class="review-hint">Отзыв можно оставить после мастер-класса</p></div>
+        </div>
+      </article>
+    </div>
+    <div class="col reveal">
+      <article class="app-card" data-id="2">
+        <div class="app-photo">
+          <img src="../public/images/candles.webp" alt="Мастерская свечей" width="640" height="360" loading="lazy">
+        </div>
+        <div class="app-body">
+          <div class="app-top">
+            <span class="badge-status status-3">Завершено</span>
+            <span class="app-number">Заявка №2</span>
+          </div>
+          <h3>Мастерская свечей</h3>
+          <div class="app-facts">
+            <p class="app-fact"><img src="../public/images/icon-calendar.png" alt="Дата" width="20" height="20">01.10.2026</p>
+            <p class="app-fact"><img src="../public/images/icon-card.png" alt="Оплата" width="20" height="20">Наличными при посещении</p>
+          </div>
+          <div class="review-slot">
+    <div class="review">
+      <button class="btn-main btn-sm review-open" type="button" hidden="">Оставить отзыв</button>
+      <form class="review-form" novalidate="">
+        <fieldset class="stars">
+          <legend class="field-label">Оценка</legend>
+          <div class="stars-row">
+      <input type="radio" id="star-2-5" name="rating" value="5" checked="">
+      <label for="star-2-5" title="5 из 5">
+        <img src="../public/images/icon-star.png" alt="5 из 5" width="32" height="32">
+      </label>
+      <input type="radio" id="star-2-4" name="rating" value="4">
+      <label for="star-2-4" title="4 из 5">
+        <img src="../public/images/icon-star.png" alt="4 из 5" width="32" height="32">
+      </label>
+      <input type="radio" id="star-2-3" name="rating" value="3">
+      <label for="star-2-3" title="3 из 5">
+        <img src="../public/images/icon-star.png" alt="3 из 5" width="32" height="32">
+      </label>
+      <input type="radio" id="star-2-2" name="rating" value="2">
+      <label for="star-2-2" title="2 из 5">
+        <img src="../public/images/icon-star.png" alt="2 из 5" width="32" height="32">
+      </label>
+      <input type="radio" id="star-2-1" name="rating" value="1">
+      <label for="star-2-1" title="1 из 5">
+        <img src="../public/images/icon-star.png" alt="1 из 5" width="32" height="32">
+      </label></div>
+        </fieldset>
+        <p class="field-error" data-for="rating" aria-live="polite"></p>
+        <label class="field-label" for="comment-2">Отзыв</label>
+        <textarea class="form-control" id="comment-2" name="comment" rows="3" maxlength="1000" placeholder="Что понравилось, что получилось сделать?">Свечи получились ровные, а запах лаванды держится до сих пор</textarea>
+        <p class="field-error" data-for="comment" aria-live="polite"></p>
+        <button class="btn-main btn-sm" type="submit">Отправить отзыв</button>
+      </form>
+    </div></div>
+        </div>
+      </article>
+    </div>
+    <div class="col reveal">
+      <article class="app-card" data-id="1">
+        <div class="app-photo">
+          <img src="../public/images/pottery.webp" alt="Гончарная мастерская" width="640" height="360" loading="lazy">
+        </div>
+        <div class="app-body">
+          <div class="app-top">
+            <span class="badge-status status-3">Завершено</span>
+            <span class="app-number">Заявка №1</span>
+          </div>
+          <h3>Гончарная мастерская</h3>
+          <div class="app-facts">
+            <p class="app-fact"><img src="../public/images/icon-calendar.png" alt="Дата" width="20" height="20">17.09.2026</p>
+            <p class="app-fact"><img src="../public/images/icon-card.png" alt="Оплата" width="20" height="20">Переводом по СБП</p>
+          </div>
+          <div class="review-slot">
+      <div class="review">
+        <p class="review-title">Ваш отзыв</p>
+        <span class="review-stars" role="img" aria-label="Оценка 5 из 5"><img src="../public/images/icon-star.png" alt="" width="18" height="18"><img src="../public/images/icon-star.png" alt="" width="18" height="18"><img src="../public/images/icon-star.png" alt="" width="18" height="18"><img src="../public/images/icon-star.png" alt="" width="18" height="18"><img src="../public/images/icon-star.png" alt="" width="18" height="18"></span>
+        <p class="review-text">Мастер всё показал на своём круге, а потом помог с моей чашкой. Приду ещё!</p>
+      </div></div>
+        </div>
+      </article>
+    </div></div>
+
+    <p class="count">Если заявок нет:</p><div class="empty" id="empty">
+      <img src="../public/images/empty.webp" alt="Открытая коробка с кистью, свечой и глиной" width="480" height="270" loading="lazy">
+      <p class="empty-text">Заявок пока нет. Выберите мастерскую и&nbsp;запишитесь на&nbsp;первое занятие.</p>
+      <a class="btn-main" href="index.html#catalog">Выбрать мастерскую</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-small" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ" width="32" height="32" loading="lazy">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+      <a class="footer-phone" href="tel:88005552027">
+        <img src="../public/images/icon-phone.png" alt="Телефон" width="24" height="24" loading="lazy">8 800 555-20-27
+      </a>
+      <p class="footer-note">Запись на творческие мастер-классы, 2026</p>
+    </div>
+  </footer>
+
+
+
+</body></html>

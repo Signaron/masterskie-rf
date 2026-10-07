@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мастерские.РФ - запись на творческие мастер-классы</title>
+  <meta name="description" content="Пять мастерских: гончарная, художественная, кулинарная, столярная и свечная. Запись на мастер-класс онлайн.">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/bootstrap/bootstrap.bundle.min.js" defer></script>
+  <script src="/js/common.js" defer></script>
+  <script src="/js/index.js" defer></script>
+</head>
+<body>
+<!-- header -->
+
+  <main>
+    <!-- Баннер: картинка на всю ширину, текст на светлой стене слева -->
+    <section class="hero">
+      <img class="hero-image" src="/images/hero.webp" width="1600" height="600" fetchpriority="high"
+           alt="Светлая мастерская: люди работают за деревянными столами, на полках керамика и свечи">
+      <div class="container hero-content">
+        <h1 class="hero-title rise">Мастер-классы,<br>после которых<br>остаётся вещь</h1>
+        <p class="hero-lead rise">Глина, холст, тесто, дерево и&nbsp;воск. Выберите мастерскую и&nbsp;удобный день.</p>
+        <div class="hero-actions rise">
+          <a class="btn-main" href="/application">Записаться</a>
+          <p class="hero-note">Оплата на месте или по СБП</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Каталог: карточки строит index.js из таблицы workshops -->
+    <section class="catalog container" id="catalog" aria-labelledby="catalog-title">
+      <div class="section-head">
+        <h2 id="catalog-title">Пять мастерских</h2>
+        <p class="section-lead">Занятие длится около трёх часов, все материалы и&nbsp;фартук выдаём на&nbsp;месте.</p>
+      </div>
+      <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 stagger" id="workshops"></div>
+      <p class="notice notice-error" id="catalog-error" hidden>Не удалось загрузить мастерские. Обновите страницу.</p>
+    </section>
+  </main>
+
+<!-- footer -->
+</body>
+</html>

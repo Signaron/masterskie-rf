@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Запись на мастер-класс - Мастерские.РФ</title>
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/bootstrap/bootstrap.bundle.min.js" defer></script>
+  <script src="/js/Validator.js" defer></script>
+  <script src="/js/common.js" defer></script>
+  <script src="/js/application.js" defer></script>
+</head>
+<body>
+<!-- header -->
+
+  <main class="container page">
+    <div class="application-layout">
+      <div class="application-head">
+        <h1 class="rise">Запись на&nbsp;мастер-класс</h1>
+        <p class="lead rise">Выберите мастерскую, дату и&nbsp;способ оплаты. Администратор проверит заявку и&nbsp;подтвердит запись.</p>
+        <p class="notice" id="message" hidden></p>
+      </div>
+
+      <!-- Фото выбранной мастерской: меняется вместе со списком -->
+      <figure class="workshop-preview rise" id="preview" aria-live="polite">
+        <img id="preview-image" src="/images/pottery.webp" alt="Гончарная мастерская" width="640" height="360">
+        <figcaption>
+          <span class="preview-name" id="preview-name">Пять мастерских на выбор</span>
+          <span class="preview-text" id="preview-text">Выберите мастерскую в списке, здесь появится её фото</span>
+        </figcaption>
+      </figure>
+
+      <form class="form-panel rise" id="application-form" novalidate>
+        <div class="field">
+          <label class="field-label" for="workshop_id">Мастерская</label>
+          <select class="form-select" id="workshop_id" name="workshop_id" aria-describedby="workshop_id-error">
+            <option value="">Выберите мастерскую</option>
+          </select>
+          <p class="field-error" id="workshop_id-error" data-for="workshop_id" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="class_date">Дата занятия</label>
+          <div class="field-with-icon">
+            <img class="field-icon" src="/images/icon-calendar.png" alt="Календарь" width="24" height="24">
+            <input class="form-control" id="class_date" name="class_date" type="date" aria-describedby="class_date-error">
+          </div>
+          <p class="field-error" id="class_date-error" data-for="class_date" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="payment_method_id">Способ оплаты</label>
+          <div class="field-with-icon">
+            <img class="field-icon" src="/images/icon-card.png" alt="Банковская карта" width="24" height="24">
+            <select class="form-select" id="payment_method_id" name="payment_method_id" aria-describedby="payment_method_id-error">
+              <option value="">Выберите способ оплаты</option>
+            </select>
+          </div>
+          <p class="field-error" id="payment_method_id-error" data-for="payment_method_id" aria-live="polite"></p>
+        </div>
+
+        <button class="btn-main btn-wide" type="submit">Отправить</button>
+        <p class="form-note">Новая заявка получит статус «Новая»</p>
+      </form>
+    </div>
+  </main>
+
+<!-- footer -->
+</body>
+</html>

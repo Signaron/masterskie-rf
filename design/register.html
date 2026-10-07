@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Макет 390x844: Регистрация - Мастерские.РФ</title>
+  <link rel="icon" href="../public/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/style.css">
+  <script src="../public/bootstrap/bootstrap.bundle.min.js" defer=""></script>
+  </head>
+<body data-role="guest">
+  <!-- Шапка: одна на все страницы, сервер подставляет её вместо метки header.
+       Пункты for-guest / for-user / for-admin / for-member прячет CSS по роли из <body data-role> -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Главное меню">
+      <a class="brand" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ: ваза, кисть и резец в круге" width="44" height="44">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Открыть меню">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav menu">
+          <li><a class="menu-link" href="index.html#catalog">Мастерские</a></li>
+          <li class="for-user"><a class="menu-link" href="application.html">Записаться</a></li>
+          <li class="for-user"><a class="menu-link" href="cabinet.html">Мои заявки</a></li>
+          <li class="for-admin"><a class="menu-link" href="admin.html">Панель администратора</a></li>
+          <li class="for-guest"><a class="menu-link" href="register.html" aria-current="page">Регистрация</a></li>
+          <li class="for-guest">
+            <a class="menu-account" href="login.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Войти
+            </a>
+          </li>
+          <li class="for-member">
+            <a class="menu-account" href="index.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Выйти
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="auth">
+    <img class="auth-bg" src="../public/images/auth-bg.webp" width="390" height="844" alt="Деревянные полки с глиняными чашами в мастерской">
+
+    <div class="auth-panel">
+      <h1 class="rise">Регистрация</h1>
+      <p class="lead rise">Все поля обязательны. После регистрации можно записаться на&nbsp;мастер-класс.</p>
+      <p class="notice" id="message" hidden=""></p>
+
+      <form class="rise" id="register-form" novalidate="">
+        <div class="field">
+          <label class="field-label" for="login">Логин</label>
+          <input class="form-control is-error" id="login" name="login" maxlength="50" autocomplete="username" placeholder="например, ivan2027" aria-describedby="login-error" value="ivan;">
+          <p class="field-error is-shown" id="login-error" data-for="login" aria-live="polite">Логин: латинские буквы и цифры, от 6 символов</p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="password">Пароль</label>
+          <input class="form-control" id="password" name="password" type="password" autocomplete="new-password" placeholder="Не меньше 8 символов" aria-describedby="password-error">
+          <p class="field-error" id="password-error" data-for="password" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="fio">ФИО</label>
+          <input class="form-control" id="fio" name="fio" maxlength="150" autocomplete="name" placeholder="например, Петров Иван Сергеевич" aria-describedby="fio-error" value="Петров Иван Сергеевич">
+          <p class="field-error" id="fio-error" data-for="fio" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="phone">Телефон</label>
+          <input class="form-control is-error" id="phone" name="phone" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="8(912)345-67-89" aria-describedby="phone-error" value="+7 912 345 67 89">
+          <p class="field-error is-shown" id="phone-error" data-for="phone" aria-live="polite">Телефон в формате 8(XXX)XXX-XX-XX</p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">Электронная почта</label>
+          <input class="form-control is-error" id="email" name="email" type="email" maxlength="100" autocomplete="email" placeholder="например, ivan@mail.ru" aria-describedby="email-error" value="ivan@mail">
+          <p class="field-error is-shown" id="email-error" data-for="email" aria-live="polite">Почта в формате name@mail.ru</p>
+        </div>
+
+        <button class="btn-main btn-wide" type="submit">Зарегистрироваться</button>
+      </form>
+
+      <p class="auth-switch rise"><a href="login.html">Уже есть аккаунт? <span>Войти</span></a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-small" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ" width="32" height="32" loading="lazy">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+      <a class="footer-phone" href="tel:88005552027">
+        <img src="../public/images/icon-phone.png" alt="Телефон" width="24" height="24" loading="lazy">8 800 555-20-27
+      </a>
+      <p class="footer-note">Запись на творческие мастер-классы, 2026</p>
+    </div>
+  </footer>
+
+
+
+</body></html>

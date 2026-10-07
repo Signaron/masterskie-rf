@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Макет 390x844: Вход - Мастерские.РФ</title>
+  <link rel="icon" href="../public/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/style.css">
+  <script src="../public/bootstrap/bootstrap.bundle.min.js" defer=""></script>
+  </head>
+<body data-role="guest">
+  <!-- Шапка: одна на все страницы, сервер подставляет её вместо метки header.
+       Пункты for-guest / for-user / for-admin / for-member прячет CSS по роли из <body data-role> -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Главное меню">
+      <a class="brand" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ: ваза, кисть и резец в круге" width="44" height="44">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Открыть меню">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav menu">
+          <li><a class="menu-link" href="index.html#catalog">Мастерские</a></li>
+          <li class="for-user"><a class="menu-link" href="application.html">Записаться</a></li>
+          <li class="for-user"><a class="menu-link" href="cabinet.html">Мои заявки</a></li>
+          <li class="for-admin"><a class="menu-link" href="admin.html">Панель администратора</a></li>
+          <li class="for-guest"><a class="menu-link" href="register.html">Регистрация</a></li>
+          <li class="for-guest">
+            <a class="menu-account" href="login.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Войти
+            </a>
+          </li>
+          <li class="for-member">
+            <a class="menu-account" href="index.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Выйти
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="auth">
+    <img class="auth-bg" src="../public/images/auth-bg.webp" width="390" height="844" alt="Деревянные полки с глиняными чашами в мастерской">
+
+    <div class="auth-panel">
+      <h1 class="rise">Вход</h1>
+      <p class="lead rise">Войдите, чтобы записаться на мастер-класс и&nbsp;следить за&nbsp;своими заявками.</p>
+      <p class="notice notice-error" id="message">Неверный логин или пароль</p>
+
+      <form class="rise" id="login-form" novalidate="">
+        <div class="field">
+          <label class="field-label" for="login">Логин</label>
+          <input class="form-control" id="login" name="login" maxlength="50" autocomplete="username" aria-describedby="login-error" value="ivan2027">
+          <p class="field-error" id="login-error" data-for="login" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="password">Пароль</label>
+          <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" aria-describedby="password-error">
+          <p class="field-error" id="password-error" data-for="password" aria-live="polite"></p>
+        </div>
+
+        <button class="btn-main btn-wide" type="submit">Войти</button>
+      </form>
+
+      <p class="auth-switch rise"><a href="register.html">Еще не зарегистрированы? <span>Регистрация</span></a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-small" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ" width="32" height="32" loading="lazy">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+      <a class="footer-phone" href="tel:88005552027">
+        <img src="../public/images/icon-phone.png" alt="Телефон" width="24" height="24" loading="lazy">8 800 555-20-27
+      </a>
+      <p class="footer-note">Запись на творческие мастер-классы, 2026</p>
+    </div>
+  </footer>
+
+
+
+</body></html>

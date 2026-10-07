@@ -1,0 +1,36 @@
+  <!-- Шапка: одна на все страницы, сервер подставляет её вместо метки header.
+       Пункты for-guest / for-user / for-admin / for-member прячет CSS по роли из <body data-role> -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Главное меню">
+      <a class="brand" href="/">
+        <img src="/images/logo.png" alt="Эмблема Мастерские.РФ: ваза, кисть и резец в круге" width="44" height="44">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+              aria-controls="menu" aria-expanded="false" aria-label="Открыть меню">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav menu">
+          <li><a class="menu-link" href="/#catalog">Мастерские</a></li>
+          <li class="for-user"><a class="menu-link" href="/application">Записаться</a></li>
+          <li class="for-user"><a class="menu-link" href="/cabinet">Мои заявки</a></li>
+          <li class="for-admin"><a class="menu-link" href="/admin">Панель администратора</a></li>
+          <li class="for-guest"><a class="menu-link" href="/register">Регистрация</a></li>
+          <li class="for-guest">
+            <a class="menu-account" href="/login">
+              <img src="/images/icon-profile.png" alt="" width="20" height="20">Войти
+            </a>
+          </li>
+          <li class="for-member">
+            <a class="menu-account" href="/logout">
+              <img src="/images/icon-profile.png" alt="" width="20" height="20">Выйти
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>

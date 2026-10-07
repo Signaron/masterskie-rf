@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Макет 390x844: Запись на мастер-класс - Мастерские.РФ</title>
+  <link rel="icon" href="../public/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/style.css">
+  <script src="../public/bootstrap/bootstrap.bundle.min.js" defer=""></script>
+  </head>
+<body data-role="user">
+  <!-- Шапка: одна на все страницы, сервер подставляет её вместо метки header.
+       Пункты for-guest / for-user / for-admin / for-member прячет CSS по роли из <body data-role> -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Главное меню">
+      <a class="brand" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ: ваза, кисть и резец в круге" width="44" height="44">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+
+      <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Открыть меню">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav menu">
+          <li><a class="menu-link" href="index.html#catalog">Мастерские</a></li>
+          <li class="for-user"><a class="menu-link" href="application.html" aria-current="page">Записаться</a></li>
+          <li class="for-user"><a class="menu-link" href="cabinet.html">Мои заявки</a></li>
+          <li class="for-admin"><a class="menu-link" href="admin.html">Панель администратора</a></li>
+          <li class="for-guest"><a class="menu-link" href="register.html">Регистрация</a></li>
+          <li class="for-guest">
+            <a class="menu-account" href="login.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Войти
+            </a>
+          </li>
+          <li class="for-member">
+            <a class="menu-account" href="index.html">
+              <img src="../public/images/icon-profile.png" alt="" width="20" height="20">Выйти
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="container page">
+    <div class="application-layout">
+      <div class="application-head">
+        <h1 class="rise">Запись на&nbsp;мастер-класс</h1>
+        <p class="lead rise">Выберите мастерскую, дату и&nbsp;способ оплаты. Администратор проверит заявку и&nbsp;подтвердит запись.</p>
+        <p class="notice" id="message" hidden=""></p>
+      </div>
+
+      <!-- Фото выбранной мастерской: меняется вместе со списком -->
+      <figure class="workshop-preview rise" id="preview" aria-live="polite">
+        <img id="preview-image" src="../public/images/pottery.webp" alt="Гончарная мастерская" width="640" height="360">
+        <figcaption>
+          <span class="preview-name" id="preview-name">Гончарная мастерская</span>
+          <span class="preview-text" id="preview-text">Гончарный круг, глина и первая собственная чашка</span>
+        </figcaption>
+      </figure>
+
+      <form class="form-panel rise" id="application-form" novalidate="">
+        <div class="field">
+          <label class="field-label" for="workshop_id">Мастерская</label>
+          <select class="form-select" id="workshop_id" name="workshop_id" aria-describedby="workshop_id-error">
+            <option value="">Выберите мастерскую</option>
+          <option value="1" selected="">Гончарная мастерская</option><option value="2">Художественная студия</option><option value="3">Кулинарная студия</option><option value="4">Столярная мастерская</option><option value="5">Мастерская свечей</option></select>
+          <p class="field-error" id="workshop_id-error" data-for="workshop_id" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="class_date">Дата занятия</label>
+          <div class="field-with-icon">
+            <img class="field-icon" src="../public/images/icon-calendar.png" alt="Календарь" width="24" height="24">
+            <input class="form-control" id="class_date" name="class_date" type="date" aria-describedby="class_date-error" min="2026-10-07" max="2027-10-07" value="2026-10-16">
+          </div>
+          <p class="field-error" id="class_date-error" data-for="class_date" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="payment_method_id">Способ оплаты</label>
+          <div class="field-with-icon">
+            <img class="field-icon" src="../public/images/icon-card.png" alt="Банковская карта" width="24" height="24">
+            <select class="form-select" id="payment_method_id" name="payment_method_id" aria-describedby="payment_method_id-error">
+              <option value="">Выберите способ оплаты</option>
+            <option value="1">Наличными при посещении</option><option value="2" selected="">Переводом по СБП</option></select>
+          </div>
+          <p class="field-error" id="payment_method_id-error" data-for="payment_method_id" aria-live="polite"></p>
+        </div>
+
+        <button class="btn-main btn-wide" type="submit">Отправить</button>
+        <p class="form-note">Новая заявка получит статус «Новая»</p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-small" href="index.html">
+        <img src="../public/images/logo.png" alt="Эмблема Мастерские.РФ" width="32" height="32" loading="lazy">
+        <span>Мастерские<span class="brand-accent">.РФ</span></span>
+      </a>
+      <a class="footer-phone" href="tel:88005552027">
+        <img src="../public/images/icon-phone.png" alt="Телефон" width="24" height="24" loading="lazy">8 800 555-20-27
+      </a>
+      <p class="footer-note">Запись на творческие мастер-классы, 2026</p>
+    </div>
+  </footer>
+
+
+
+</body></html>
